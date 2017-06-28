@@ -4,7 +4,9 @@ LABEL \
     vendor="Factory 2.0" \
     license="GPLv3"
 ENTRYPOINT ["gunicorn", "datagrepper.app:app"]
-CMD ["--bind", "0.0.0.0:8080", "-w", "4"]
+CMD ["--bind", "0.0.0.0:8080",
+     "-w", "4",
+     "--access-logfile", "-"]
 EXPOSE 8080
 RUN yum -y install python-gunicorn && yum -y clean all
 RUN yum -y install epel-release && yum -y clean all
