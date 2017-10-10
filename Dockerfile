@@ -22,6 +22,6 @@ RUN echo "DATAGREPPER_DOC_PATH='/var/tmp/fedmsg_meta_umb/datagrepper-docs/'" >> 
 RUN cd /var/tmp && \
     git clone https://github.com/release-engineering/fedmsg_meta_umb && \
     cd fedmsg_meta_umb && \
-    git checkout 7026356 && \
+    git checkout 59ae65b && \
     python setup.py install
 USER 1001
