@@ -26,7 +26,7 @@ RUN pip install --upgrade setuptools && pip install sphinx cloud-sptheme nose ma
 RUN cd /var/tmp && \
     git clone https://github.com/release-engineering/fedmsg_meta_umb && \
     cd fedmsg_meta_umb && \
-    git checkout 59ae65b && \
+    git checkout 73e5079 && \
     python setup.py install
 RUN sphinx-build doc/ htmldocs/
 COPY htmldocs/ /usr/lib/python2.7/site-packages/datagrepper/umb/
