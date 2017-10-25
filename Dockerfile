@@ -30,4 +30,6 @@ RUN cd /var/tmp && \
     python setup.py install && \
     sphinx-build doc/ htmldocs/ && \
     mv htmldocs /usr/lib/python2.7/site-packages/datagrepper/umb
+COPY send_umb_docs.py /var/tmp
+RUN cat /var/tmp/send_umb_docs.py >> /usr/lib/python2.7/site-packages/datagrepper/app.py
 USER 1001
