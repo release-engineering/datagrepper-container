@@ -26,7 +26,7 @@ RUN pip install cloud-sptheme
 RUN cd /var/tmp && \
     git clone https://github.com/release-engineering/fedmsg_meta_umb && \
     cd fedmsg_meta_umb && \
-    git checkout 25ff697 && \
+    git checkout 1401bdc && \
     python setup.py install && \
     sphinx-build doc/ htmldocs/ && \
     mv htmldocs /usr/lib/python2.7/site-packages/datagrepper/umb
