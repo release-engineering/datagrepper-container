@@ -1,6 +1,6 @@
 import os
 
 config = dict(
-    environment=os.environ['ENVIRONMENT'],
+    environment=os.environ.get('ENVIRONMENT', 'dev'),
     zmq_enabled=False,
 )
