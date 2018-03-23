@@ -22,9 +22,9 @@ All configuration of the image is handled via environment variables,
 provided by your container runtime environment.
 
 - ENVIRONMENT: the environment the datagrepper instance is running in,
-               usually `dev`, `stg`, or `prod`.
+  usually `dev`, `stg`, or `prod` (default: dev)
 - DB_HOST: the host where the `datanommer` database is located
 - DB_NAME: the name of the `datanommer` database
 - DB_USERNAME: the username to connect to the `datanommer` database
 - DB_PASSWORD: the password to connect to the `datanommer` database
-- LOGLEVEL: what level of logging to use (defaults to WARNING)
+- LOGLEVEL: what level of logging to use (default: WARNING)
