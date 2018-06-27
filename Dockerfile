@@ -15,7 +15,7 @@ RUN dnf -y install \
     dnf -y clean all
 RUN rm -f /etc/fedmsg.d/*
 COPY fedmsg.d/ /etc/fedmsg.d/
-RUN echo "DATAGREPPER_DOC_PATH='/usr/share/doc/python-fedmsg-meta-umb-docs/datagrepper-docs'" >> /etc/datagrepper/datagrepper.cfg
+COPY datagrepper.cfg /etc/datagrepper/
 COPY send_umb_docs.py /var/tmp
 RUN cat /var/tmp/send_umb_docs.py >> /usr/lib/python2.7/site-packages/datagrepper/app.py
 USER 1001
