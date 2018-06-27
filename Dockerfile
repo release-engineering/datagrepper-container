@@ -7,7 +7,7 @@ CMD ["gunicorn", "--bind", "0.0.0.0:8080", "-w", "4", "--access-logfile", "-", "
 EXPOSE 8080
 COPY repos/ /etc/yum.repos.d/
 RUN dnf -y install \
-        python2-gunicorn
+        python2-gunicorn \
         datagrepper \
         python2-fedmsg-meta-umb \
         python-fedmsg-meta-umb-docs \
