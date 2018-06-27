@@ -27,16 +27,6 @@ config = dict(
                 "propagate": False,
                 "handlers": ["console"],
             },
-            moksha={
-                "level": os.environ.get("LOGLEVEL", "WARNING"),
-                "propagate": False,
-                "handlers": ["console"],
-            },
-            stomper={
-                "level": os.environ.get("LOGLEVEL", "WARNING"),
-                "propagate": False,
-                "handlers": ["console"],
-            },
             datanommer={
                 "level": os.environ.get("LOGLEVEL", "WARNING"),
                 "propagate": False,
