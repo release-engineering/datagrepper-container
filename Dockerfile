@@ -10,7 +10,7 @@ RUN dnf -y install \
         python2-gunicorn \
         datagrepper \
         python2-fedmsg-meta-umb \
-        python-fedmsg-meta-umb-docs \
+        python-fedmsg-meta-umb-doc \
         python2-psycopg2 && \
     dnf -y clean all
 RUN rm -f /etc/fedmsg.d/*
