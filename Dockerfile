@@ -16,6 +16,7 @@ RUN dnf -y install \
 RUN rm -f /etc/fedmsg.d/*
 COPY fedmsg.d/ /etc/fedmsg.d/
 COPY datagrepper.cfg /etc/datagrepper/
+COPY static/ /usr/lib/python2.7/site-packages/datagrepper/static/
 COPY send_umb_docs.py /var/tmp
 RUN cat /var/tmp/send_umb_docs.py >> /usr/lib/python2.7/site-packages/datagrepper/app.py && \
     rm -f /usr/lib/python2.7/site-packages/datagrepper/app.py{c,o}
