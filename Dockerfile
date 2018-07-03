@@ -3,7 +3,7 @@ LABEL \
     name="datagrepper" \
     vendor="Factory 2.0" \
     license="GPLv3"
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "-w", "4", "--access-logfile", "-", "datagrepper.app:app"]
+CMD ["gunicorn-2", "--bind", "0.0.0.0:8080", "-w", "4", "--access-logfile", "-", "datagrepper.app:app"]
 EXPOSE 8080
 COPY repos/ /etc/yum.repos.d/
 RUN dnf -y install \
@@ -16,6 +16,7 @@ RUN dnf -y install \
 RUN rm -f /etc/fedmsg.d/*
 COPY fedmsg.d/ /etc/fedmsg.d/
 COPY datagrepper.cfg /etc/datagrepper/
+COPY static/ /usr/lib/python2.7/site-packages/datagrepper/static/
 COPY send_umb_docs.py /var/tmp
 RUN cat /var/tmp/send_umb_docs.py >> /usr/lib/python2.7/site-packages/datagrepper/app.py && \
     rm -f /usr/lib/python2.7/site-packages/datagrepper/app.py{c,o}
