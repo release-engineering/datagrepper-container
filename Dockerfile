@@ -3,7 +3,7 @@ LABEL \
     name="datagrepper" \
     vendor="Factory 2.0" \
     license="GPLv3"
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "-w", "4", "--access-logfile", "-", "datagrepper.app:app"]
+CMD ["gunicorn-2", "--bind", "0.0.0.0:8080", "-w", "4", "--access-logfile", "-", "datagrepper.app:app"]
 EXPOSE 8080
 COPY repos/ /etc/yum.repos.d/
 RUN dnf -y install \
