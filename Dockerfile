@@ -1,23 +1,24 @@
-FROM fedora:28
+FROM fedora:30
 LABEL \
     name="datagrepper" \
     vendor="Factory 2.0" \
     license="GPLv3"
-CMD ["gunicorn-2", "--bind", "0.0.0.0:8080", "-w", "4", "--access-logfile", "-", "datagrepper.app:app"]
+ENTRYPOINT ["gunicorn-3"]
+CMD ["datagrepper.app:app"]
+ENV DNF_CMF="dnf -y --setopt=deltarpm=0 --setopt=install_weak_deps=false"
+ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8080 --workers=4 --access-logfile=-"
+ENV EXTRA_RPMS="python3-fedmsg-meta-umb python-fedmsg-meta-umb-doc"
 EXPOSE 8080
 COPY repos/ /etc/yum.repos.d/
-RUN dnf -y install \
-        python2-gunicorn \
+RUN $DNF_CMD install \
         datagrepper \
-        python2-fedmsg-meta-umb \
-        python-fedmsg-meta-umb-doc \
-        python2-psycopg2 && \
-    dnf -y clean all
+        python3-gunicorn \
+        python3-psycopg2 \
+        nginx \
+        $EXTRA_RPMS && \
+    $DNF_CMD clean all
 RUN rm -f /etc/fedmsg.d/*
 COPY fedmsg.d/ /etc/fedmsg.d/
 COPY datagrepper.cfg /etc/datagrepper/
-COPY static/ /usr/lib/python2.7/site-packages/datagrepper/static/
-COPY send_umb_docs.py /var/tmp
-RUN cat /var/tmp/send_umb_docs.py >> /usr/lib/python2.7/site-packages/datagrepper/app.py && \
-    rm -f /usr/lib/python2.7/site-packages/datagrepper/app.py{c,o}
+COPY static/ /usr/lib/python3.7/site-packages/datagrepper/static/
 USER 1001
