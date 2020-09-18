@@ -27,4 +27,5 @@ provided by your container runtime environment.
 - DB_NAME: the name of the `datanommer` database
 - DB_USERNAME: the username to connect to the `datanommer` database
 - DB_PASSWORD: the password to connect to the `datanommer` database
+- DEFAULT_QUERY_DELTA: the default delta to set on queries
 - LOGLEVEL: what level of logging to use (default: WARNING)
