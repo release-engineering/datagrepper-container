@@ -2,7 +2,7 @@
 
 This repository contains configuration and supporting files for running
 [datagrepper](https://github.com/fedora-infra/datagrepper) in a container.
-The image is built on top of the [CentOS](https://www.centos.org/) 7 base
+The image is built on top of a [Fedora](https://hub.docker.com/_/fedora) base
 image.
 
 ## Build
