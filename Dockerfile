@@ -27,6 +27,6 @@ RUN rm -f /etc/fedmsg.d/*
 COPY fedmsg.d/ /etc/fedmsg.d/
 
 COPY datagrepper.cfg /etc/datagrepper/
-COPY static/ /usr/lib/python3.7/site-packages/datagrepper/static/
+COPY static/ /usr/lib/python3.8/site-packages/datagrepper/static/
 
 USER 1001
