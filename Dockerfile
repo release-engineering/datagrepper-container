@@ -2,7 +2,7 @@ FROM fedora:32
 
 LABEL \
     name="datagrepper" \
-    vendor="Factory 2.0" \
+    vendor="EXD SP" \
     license="GPLv3"
 
 ENTRYPOINT ["gunicorn-3"]
