@@ -1,16 +1,25 @@
-FROM fedora:32
+FROM registry.fedoraproject.org/fedora-minimal:33
 
-LABEL \
-    name="datagrepper" \
-    vendor="EXD SP" \
-    license="GPLv3"
+LABEL name="datagrepper" \
+      vendor="Red Hat EXD Software Production" \
+      license="GPL-2.0-or-later" \
+      org.opencontainers.image.title="datagrepper" \
+      org.opencontainers.image.description="datagrepper in a container, suitable for running on OpenShift" \
+      org.opencontainers.image.vendor="Red Hat EXD Software Production" \
+      org.opencontainers.image.authors="EXD Messaging Guild <exd-guild-messaging@redhat.com>" \
+      org.opencontainers.image.licenses="GPL-2.0-or-later" \
+      org.opencontainers.image.url="https://github.com/release-engineering/datagrepper-container" \
+      org.opencontainers.image.source="https://github.com/release-engineering/datagrepper-container" \
+      org.opencontainers.image.documentation="https://github.com/fedora-infra/datagrepper" \
+      distribution-scope="public"
 
 ENTRYPOINT ["gunicorn-3"]
 CMD ["datagrepper.app:app"]
 ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8080 --workers=4 --access-logfile=-"
 
-ENV DNF_CMD="dnf -y --setopt=deltarpm=0 --setopt=install_weak_deps=false"
+ENV DNF_CMD="microdnf --setopt=install_weak_deps=0"
 ENV EXTRA_RPMS="python3-fedmsg-meta-umb python-fedmsg-meta-umb-doc"
+ENV PYTHON_VERSION="3.9"
 
 EXPOSE 8080
 
@@ -27,6 +36,6 @@ RUN rm -f /etc/fedmsg.d/*
 COPY fedmsg.d/ /etc/fedmsg.d/
 
 COPY datagrepper.cfg /etc/datagrepper/
-COPY static/ /usr/lib/python3.8/site-packages/datagrepper/static/
+COPY static/ /usr/lib/python${PYTHON_VERSION}/site-packages/datagrepper/static/
 
 USER 1001
