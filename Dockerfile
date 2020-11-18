@@ -1,9 +1,13 @@
 FROM registry.fedoraproject.org/fedora-minimal:33
 
+ENV DATAGREPPER_VERSION="0.9.7"
+
 LABEL name="datagrepper" \
+      version="$DATAGREPPER_VERSION" \
       vendor="Red Hat EXD Software Production" \
       license="GPL-2.0-or-later" \
       org.opencontainers.image.title="datagrepper" \
+      org.opencontainers.image.version="$DATAGREPPER_VERSION" \
       org.opencontainers.image.description="datagrepper in a container, suitable for running on OpenShift" \
       org.opencontainers.image.vendor="Red Hat EXD Software Production" \
       org.opencontainers.image.authors="EXD Messaging Guild <exd-guild-messaging@redhat.com>" \
