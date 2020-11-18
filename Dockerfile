@@ -38,4 +38,9 @@ COPY fedmsg.d/ /etc/fedmsg.d/
 COPY datagrepper.cfg /etc/datagrepper/
 COPY static/ /usr/lib/python${PYTHON_VERSION}/site-packages/datagrepper/static/
 
+# fedora-minimal removes zoneinfo files to save space, but
+# pytz expects zone.tab to exist. Create an empty zone.tab
+# to prevent (non-fatal) tracebacks on service startup.
+RUN mkdir -p /usr/share/zoneinfo && touch /usr/share/zoneinfo/zone.tab
+
 USER 1001
