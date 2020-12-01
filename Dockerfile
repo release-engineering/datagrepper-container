@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-minimal:33
+FROM registry.fedoraproject.org/fedora:33
 
 ENV DATAGREPPER_VERSION="0.9.7"
 
@@ -21,7 +21,7 @@ ENTRYPOINT ["gunicorn-3"]
 CMD ["datagrepper.app:app"]
 ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8080 --workers=4 --access-logfile=-"
 
-ENV DNF_CMD="microdnf --setopt=install_weak_deps=0"
+ENV DNF_CMD="dnf -y --setopt=install_weak_deps=0"
 ENV EXTRA_RPMS="python3-fedmsg-meta-umb python-fedmsg-meta-umb-doc"
 ENV PYTHON_VERSION="3.9"
 
@@ -41,10 +41,5 @@ COPY fedmsg.d/ /etc/fedmsg.d/
 
 COPY datagrepper.cfg /etc/datagrepper/
 COPY static/ /usr/lib/python${PYTHON_VERSION}/site-packages/datagrepper/static/
-
-# fedora-minimal removes zoneinfo files to save space, but
-# pytz expects zone.tab to exist. Create an empty zone.tab
-# to prevent (non-fatal) tracebacks on service startup.
-RUN mkdir -p /usr/share/zoneinfo && touch /usr/share/zoneinfo/zone.tab
 
 USER 1001
