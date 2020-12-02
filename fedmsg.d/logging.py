@@ -7,12 +7,7 @@ bare_format = "[%(asctime)s][%(name)10s %(levelname)7s] %(message)s"
 config = dict(
     logging=dict(
         version=1,
-        formatters=dict(
-            bare={
-                "datefmt": "%Y-%m-%d %H:%M:%S",
-                "format": bare_format
-            },
-        ),
+        formatters=dict(bare={"datefmt": "%Y-%m-%d %H:%M:%S", "format": bare_format}),
         handlers=dict(
             console={
                 "class": "logging.StreamHandler",
