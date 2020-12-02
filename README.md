@@ -8,7 +8,7 @@ image.
 ## Build
 
 To build the container in OpenShift, you can run:
-```
+```bash
 oc new-build https://github.com/release-engineering/datagrepper-container
 ```
 
