@@ -1,6 +1,7 @@
 FROM registry.fedoraproject.org/fedora:33
 
 ENV DATAGREPPER_VERSION="0.9.7"
+ENV FEDMSG_META_UMB_VERSION="0.0.4"
 
 LABEL name="datagrepper" \
       version="$DATAGREPPER_VERSION" \
