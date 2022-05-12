@@ -18,8 +18,7 @@ LABEL name="datagrepper" \
       org.opencontainers.image.documentation="https://github.com/fedora-infra/datagrepper" \
       distribution-scope="public"
 
-ENTRYPOINT ["gunicorn-3"]
-CMD ["datagrepper.app:app"]
+CMD ["gunicorn-3", "datagrepper.app:app"]
 ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8080 --workers=4 --access-logfile=-"
 
 ENV DNF_CMD="dnf -y --setopt=install_weak_deps=0"
