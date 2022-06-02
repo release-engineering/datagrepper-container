@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:33
+FROM registry.fedoraproject.org/fedora:latest
 
 ENV DATAGREPPER_VERSION="0.9.7"
 ENV FEDMSG_META_UMB_VERSION="0.0.4"
