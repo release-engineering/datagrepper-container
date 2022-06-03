@@ -23,7 +23,7 @@ ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8080 --workers=4 --access-logfile=-"
 
 ENV DNF_CMD="dnf -y --setopt=install_weak_deps=0"
 ENV EXTRA_RPMS="python3-fedmsg-meta-umb python-fedmsg-meta-umb-doc"
-ENV PYTHON_VERSION="3.9"
+ENV PYTHON_VERSION="3.10"
 
 EXPOSE 8080
 
